@@ -13,10 +13,14 @@ const App: React.FC = () => {
     setTodos(prevTodos => [...prevTodos, {id: Math.random(), text}]);
   }
 
+  const todoDeleteHandler = (todoId: number) => {
+    setTodos(prevTodos => prevTodos.filter(todo => todo.id !== todoId));
+  }
+
   return (
     <>
       <NewTodo onAddTodo={todoAddHandler}/>
-      <TodoList items={todos}/>
+      <TodoList items={todos} onDeleteTodo={todoDeleteHandler}/>
     </>
   )
 }
